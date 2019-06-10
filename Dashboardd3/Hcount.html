@@ -1,0 +1,408 @@
+<html>
+<head>
+ <title>Financial Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        
+    <style>
+
+            html, body, .container{
+                height: 100%; 
+                min-height: 100%;
+            }
+            
+            .top0 {
+                float: left;
+                width: 70%;
+                height: 7%;
+                background-color: black;
+            }
+            
+            .top1 {
+                float: left;
+                width: 10%;
+                height: 7%;
+                background-color: black;
+            }
+            .top2 {
+                float: left;
+                width: 10%;
+                height: 7%;
+                background-color:black;
+            }
+            .top3 {
+                float: left;
+                width: 10%;
+                height: 7%;
+                background-color:black;
+            }
+            
+            .head2 {
+              font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+              font-size: 30px;
+              margin: 10px;
+              padding-left: 10px;
+              color: white
+              
+            }
+            
+            .menu-button {
+              background-color: white; /* Green */
+              border: blue;
+              color:black;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 18px;
+              margin: 12px 4px;
+              transition-duration: 0.4s;
+              cursor: pointer;
+            }
+            
+            .menu-button:hover {
+              background-color:blue;
+              color: white;
+            }
+
+            .menu-button-selected {
+              background-color: red; /* Green */
+              border: blue;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 18px;
+              margin: 12px 4px;
+              transition-duration: 0.4s;
+              cursor: pointer;
+            }
+
+
+            
+            
+            .hspc {
+                float: left;
+                width: 100%;
+                height: 1%;
+                background-color: white;
+            }
+            
+            .vspc {
+                float: right;
+                width: 1%;
+                height: 100%;
+                background-color: white;
+            }
+            
+            .chart-area{
+                float:none;
+                width: 70%;
+                height: 70%;
+                background-color: #F7EFEE;
+                margin: 20px;
+                box-shadow: 5px 10px #888888;
+            }
+            
+            
+                  .chart-line {
+                    fill: none;
+                    stroke-width: 3px;
+                  }
+                
+                  .axis text {
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 12pt;
+                  }
+                  .axis .label {
+                    font-size: 18pt;
+                  }
+            
+                  .axis path, .axis line {
+                    fill: none;
+                    stroke: #000;
+                    shape-rendering: crispEdges;
+                  }
+                  
+                  .color-legend text {
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 12pt;
+                  }
+            
+            
+            table {
+              border-collapse: collapse;
+              font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+              margin-top: 15px;
+              margin-left: 120px;
+            }
+            
+            
+            }
+            
+            
+            td, th{
+              border: 1px solid white;
+              padding: 6px;
+            }
+            
+            tr:nth-child(1){
+              background-color: orange;
+              font-weight: bold;
+              }
+            
+            tr:nth-child(2n){
+              background-color: lightblue;
+              }
+            
+            .dot {
+              fill: #dfsk;
+              stroke: #000;
+            }
+            
+            .chart-heading {
+              border-bottom: 3px solid black;
+              background-color: darkblue;
+              color: white;
+              font-weight: bold;
+              padding: 10px;
+              margin-top: 0;
+              text-align: center;
+              font-family: Helvetica, sans-serif;
+            }
+            
+            
+            </style>
+    
+
+<script language="javascript">
+
+function submitIt()
+{
+frm1.submit();
+}
+
+
+
+</script>   
+  </head>
+  <body> 
+    <form id="frm1">
+
+            <div class="top0" id="zero"> 
+                    <p class = "head2">
+                      Financial Dashboard
+                    </p>
+                  </div>
+                
+                  <div class="top1" id="one" onclick='submitIt();'>
+                
+                      <button class ="menu-button" id="rev" onclick="form.action='/Dashboardd3/FetchRevGp';" >Rev and GP</button>  
+                      
+                      </div>
+                      <div class="top2" id="two" onclick='submitIt();'>
+                      
+                      <button class ="menu-button" id="sign"  onclick="form.action='/Dashboardd3/FetchSigning';">Signing</button> 
+                      </div>
+                      
+                      <div class="top3" id="three" onclick='submitIt();'>
+                      <button class ="menu-button-selected" id="hc"  onclick="form.action='/Dashboardd3/FetchHcount';">Head Count</button>
+                  </div>
+                      
+
+<div class="hspc"></div>
+<div class="hspc"></div>
+<div class="hspc"></div>
+
+<div id="container" class="chart-area">
+
+        <p class= "chart-heading">
+                Head count Trend YoY
+              </p>
+          
+</div>
+
+<script>
+    //var outerWidth = 1200;
+    var outerWidth = 800;
+	var outerHeight = 300;
+    var margin = { left: 150, top: 50, right: 80, bottom: 20 };
+    
+    
+    var xColumn = "month";
+    var yColumn = "revenue";
+    var colorColumn = "year";
+    var lineColumn = colorColumn;
+    
+    var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
+    var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
+    
+    
+    // This will create the svg container with 1200 width and 300 hegith
+    var svg = d3.select("#container").append("svg")
+    .attr("width", outerWidth)
+    .attr("height", outerHeight);
+
+	// this will create transform at x=80 and y=5 g = group
+    var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+	
+    var xAxisG = g.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + innerHeight + ")")
+    
+    
+    var yAxisG = g.append("g")
+        .attr("class", "y axis");
+    
+    // this is year color indicator
+    
+    var colorLegendG = g.append("g")
+    .attr("class", "color-legend")
+    .attr("transform", "translate(" + (innerWidth + 10) + "," + margin.top +")");
+    
+    var xScale = d3.scale.linear().range([0, innerWidth]);  // xscale
+    
+    var yScale = d3.scale.linear().range([innerHeight, 0]);  // yscale
+    
+    var colorScale = d3.scale.category10();
+    
+    var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(10).outerTickSize(0);
+
+
+    var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10).outerTickSize(0);
+    
+
+     //creating the line
+      var line = d3.svg.line()
+        .x(function(d) { return xScale(d[xColumn]); }) 
+        .y(function(d) { return yScale(d[yColumn]); });  
+     
+     // below is color legend line color
+      var colorLegend = d3.legend.color()
+      .scale(colorScale)
+      .shapePadding(3)
+      .shapeWidth(15)
+      .shapeHeight(15)
+      .labelOffset(10);
+      
+      
+      // actual logic is below to draw the whole with data
+      
+     
+       
+     function render(data){
+
+
+ 	    xScale.domain(d3.extent(data, function (d){ return d[xColumn]; })); // passing the data to xcolumm (month) as xaxis
+        yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]); // passing the data to ycolumm (revenue) as yaxis
+        
+        
+
+        xAxisG.call(xAxis);  // This will draw the xaxis
+        yAxisG.call(yAxis); // This will draw the yaxis
+
+
+        var nested = d3.nest()
+          .key(function (d){ return d[lineColumn]; })   // passing the linecolumn(year) as key 
+          .entries(data);
+         
+         
+        colorScale.domain(nested.map(function (d){ return d.key; }));
+        
+      
+        
+
+        var paths = g.selectAll(".chart-line").data(nested);
+        
+        paths.enter().append("path").attr("class", "chart-line");
+        
+        paths.exit().remove();
+        
+     
+        
+        // the below code draw the year line in the graph
+        paths.attr("d", function (d){
+          return line(d.values);}).attr("stroke", function (d){ return colorScale(d.key); });
+        
+        g.selectAll(".dot")
+        .data(data)
+      .enter().append("circle")
+        .attr("class", "dot")
+        .attr("cx", function(d) { return xScale(d[xColumn]); })
+        .attr("cy", function(d) { return yScale(d[yColumn]); })
+        .attr("r",  function(d) { 
+        	
+        	//alert(d.revenue);
+        	
+        	if(d.revenue >= 0 || d.revenue < 0 )
+        		{
+        		return 3.5;
+        		}
+        	else{
+        		
+        		return 0;
+        	}
+        });
+        
+        colorLegendG.call(colorLegend);
+      
+      }
+     
+      function type(d){
+          // d.year = new Date(d.year);
+           d.month = +d.month;
+           d.revenue = +d.revenue;
+           return d;
+         }
+         
+         d3.csv("Hcountyoy.csv", type, render);
+         
+      /*   
+         var outerWidth = 1200;
+         var outerHeight = 300;
+         var margin = { left: 80, top:5, right: 50, bottom: 20 };
+         var svg = d3.select("body").append("svg")
+         .attr("width", 0)
+         .attr("height", 0);
+         
+         var k = svg.append("g") .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+         */
+         d3.text("Hcountyoydata.csv", function(data) {
+             var parsedCSV = d3.csv.parseRows(data);
+             // var cana = d3.select("body").append("svg");
+             
+             
+            
+             //<svg id="abc" width="1200" height="300" viewBox="-20 -20 800 800" preserveAspectRatio="none"></svg>
+             
+            var container = d3.select("#container").
+            
+            append("g")
+                .append("table").selectAll("tr")
+                     .data(parsedCSV).enter()
+                     .append("tr")
+                     .attr("class", "head")
+                 .selectAll("td")
+                     .data(function(d) { return d; }).enter()
+                     .append("td")
+                     .text(function(d) { return d; });
+         });
+         
+          g.append("text")
+        .attr("x", outerWidth/2)             
+        .attr("y", 1)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "20px") 
+        .style("text-decoration", "underline")  
+        //.text("HC YOY Trend");
+      
+       
+    </script>
+
+</form>
+</body>
+</html>

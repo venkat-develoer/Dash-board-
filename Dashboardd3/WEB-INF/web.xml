@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>Dashboardd3</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>FetchRevGp</display-name>
+		<servlet-name>FetchRevGp</servlet-name>
+		<servlet-class>com.ibm.project.FetchRevGp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FetchRevGp</servlet-name>
+		<url-pattern>
+		/FetchRevGp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>FetchSigning</display-name>
+		<servlet-name>FetchSigning</servlet-name>
+		<servlet-class>com.ibm.project.FetchSigning</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FetchSigning</servlet-name>
+		<url-pattern>
+		/FetchSigning</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>FetchHcount</display-name>
+		<servlet-name>FetchHcount</servlet-name>
+		<servlet-class>com.ibm.project.FetchHcount</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FetchHcount</servlet-name>
+		<url-pattern>
+		/FetchHcount</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>home.html</welcome-file>
+	</welcome-file-list>
+</web-app>
