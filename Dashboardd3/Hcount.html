@@ -100,7 +100,7 @@
             .chart-area{
                 float:none;
                 width: 70%;
-                height: 70%;
+                height: 60%;
                 background-color: #F7EFEE;
                 margin: 20px;
                 box-shadow: 5px 10px #888888;
@@ -225,10 +225,9 @@ frm1.submit();
 </div>
 
 <script>
-    //var outerWidth = 1200;
-    var outerWidth = 800;
-	var outerHeight = 300;
-    var margin = { left: 150, top: 50, right: 80, bottom: 20 };
+    var outerWidth = 1200;
+    var outerHeight = 280;
+    var margin = { left: 150, top: 50, right: 50, bottom: 20 };
     
     
     var xColumn = "month";
@@ -262,7 +261,7 @@ frm1.submit();
     
     var colorLegendG = g.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth + 10) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 20) + "," + margin.top +")");
     
     var xScale = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -398,7 +397,7 @@ frm1.submit();
         .attr("text-anchor", "middle")  
         .style("font-size", "20px") 
         .style("text-decoration", "underline")  
-        //.text("HC YOY Trend");
+        .text("HC YOY Trend");
       
        
     </script>

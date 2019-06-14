@@ -7,8 +7,6 @@
         
 <style>
     
-	
-	
 html, body, .container{
     height: 100%; 
     min-height: 100%;
@@ -92,8 +90,7 @@ html, body, .container{
 
 .vspc {
     float: right;
-//  width: 0.5%;
-    width: 0.1%;
+    width: 0.5%;
     height: 50%;
     background-color: white;
 }
@@ -102,7 +99,7 @@ html, body, .container{
 .left{
     float: left;
     width: 47%;
-    height: 60%;
+    height: 50%;
     background-color: #F7EFEE;
 	  margin: 20px;
 	  box-shadow: 5px 10px #888888;
@@ -110,7 +107,7 @@ html, body, .container{
 .right{
     float: right;
     width: 47%;
-    height: 60%;
+    height: 50%;
     background-color: #F7EEEE;
 	margin: 20px;
 	box-shadow: 5px 10px #888888;
@@ -119,7 +116,7 @@ html, body, .container{
 .leftnew{
     float: left;
     width: 47%;
-    height: 60%;
+    height: 50%;
     background-color: #F2F2F2;
 	margin: 20px;
 	box-shadow: 5px 10px #888888;
@@ -127,7 +124,7 @@ html, body, .container{
 .rightnew{
     float: right;
     width: 47%;
-    height: 60%;
+    height: 50%;
     background-color: #F2F2F2;
 	margin: 20px;
 	box-shadow: 5px 10px #888888;
@@ -140,10 +137,10 @@ html, body, .container{
 
 .axis text {
   font-family: 'Open Sans', sans-serif;
-  font-size: 8pt;
+  font-size: 12pt;
 }
 .axis .label {
-  font-size: 14pt;
+  font-size: 18pt;
 }
 
 .axis path, .axis line {
@@ -154,33 +151,18 @@ html, body, .container{
 
 .color-legend text {
   font-family: 'Open Sans', sans-serif;
-  font-size: 8pt;
-}
-
-.color-legend1 text {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 6.4pt;
+  font-size: 12pt;
 }
 
 table {
   border-collapse: collapse;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
-  margin-left: 40px;
-  font-size: 8pt;
+  margin-top: 15px;
+  margin-left: 20px;
  /* border: 1px solid black; */
 
 }
 
-table1 {
-  border-collapse: collapse;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 7.5pt;
- /* border: 1px solid black; */
-
-}
 
 td, th{
   border: 1px solid white;
@@ -196,10 +178,6 @@ tr:nth-child(2n){
   background-color: lightblue;
   }
 
-td:empty ,th:empty{
-  visibility: hidden;
-  display: none;
-}
 
 .dot {
   fill: #dfsk;
@@ -351,10 +329,8 @@ td:empty ,th:empty{
 
 
 <script>
-    // var outerWidth = 830;
-	var outerWidth = 630;
-	// var outerHeight = 280;
-    var outerHeight = 180;
+    var outerWidth = 830;
+    var outerHeight = 280;
     var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
@@ -364,7 +340,6 @@ td:empty ,th:empty{
     var lineColumn = colorColumn;
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
     
     
@@ -390,7 +365,7 @@ td:empty ,th:empty{
     
     var colorLegendG = g.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale = d3.scale.linear().range([0, innerWidth]);  // xscale
     var yScale = d3.scale.linear().range([innerHeight, 0]);  // yscale
@@ -409,7 +384,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -527,10 +502,9 @@ td:empty ,th:empty{
     <script>
 
 //clear
-    // var outerWidth = 830;
-      var outerWidth = 630;
-	// var outerHeight = 280;
-      var outerHeight = 180;
+    
+      var outerWidth = 830;
+      var outerHeight = 280;
       var margin = { left: 80, top: 5, right: 50, bottom: 20 };
 
       var xColumn = "month";  // months
@@ -552,7 +526,7 @@ td:empty ,th:empty{
 
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
-      var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+      
       
       var svg = d3.select("#container1").append("svg")
         .attr("width", outerWidth + margin.left + margin.right)
@@ -586,7 +560,7 @@ td:empty ,th:empty{
       */
       var colorLegendG1 = g1.append("g")
       .attr("class", "color-legend")
-      .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+      .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
       
        var xScale1 = d3.scale.linear().range([0, innerWidth]);
 
@@ -610,7 +584,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
        function render(data){
 
@@ -692,11 +666,8 @@ td:empty ,th:empty{
 <script>
 
       //BMO START
-    var outerWidth = 630;
-	// var outerWidth = 830;
-    // var outerHeight = 280;
-    var outerHeight = 180;
-
+    var outerWidth = 830;
+    var outerHeight = 280;
     var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
@@ -707,7 +678,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerBMO").append("svg")
@@ -731,7 +702,7 @@ td:empty ,th:empty{
     
     var colorLegendG2 = g2.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale2 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -756,7 +727,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -895,10 +866,8 @@ td:empty ,th:empty{
     
     <script>
       //BMO START
-	  // var outerWidth = 830;
-    var outerWidth = 630;
-    //var outerHeight = 280;
-	var outerHeight = 180;
+    var outerWidth = 830;
+    var outerHeight = 280;
     var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
@@ -909,7 +878,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerBMO1").append("svg")
@@ -933,7 +902,7 @@ td:empty ,th:empty{
     
     var colorLegendG3 = g3.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale3 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -958,7 +927,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -1095,11 +1064,9 @@ td:empty ,th:empty{
    
 <script>
       //RBC START
-    //var outerWidth = 830;
-	var outerWidth = 630;
-    //var outerHeight = 280;
-    var outerHeight = 180;
-	var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
     var xColumn = "month";
@@ -1109,7 +1076,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerRBC").append("svg")
@@ -1133,7 +1100,7 @@ td:empty ,th:empty{
     
     var colorLegendG4 = g4.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale4 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1158,7 +1125,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -1296,11 +1263,10 @@ td:empty ,th:empty{
 <!-- ===============================================================================  -->
 
 <script>
-    //var outerWidth = 830;  
-    var outerWidth = 630;
-    //var outerHeight = 280;
-    var outerHeight = 180;
-	var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+      
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
     var xColumn = "month";
@@ -1310,7 +1276,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerRBC1").append("svg")
@@ -1334,7 +1300,7 @@ td:empty ,th:empty{
     
     var colorLegendG5 = g5.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale5 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1359,7 +1325,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -1495,11 +1461,9 @@ td:empty ,th:empty{
     
 <script>
       //SCOTIA START
-	//var outerWidth = 830;  
-    var outerWidth = 630;
-    //var outerHeight = 280;
-    var outerHeight = 180;
-	var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
     var xColumn = "month";
@@ -1509,7 +1473,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerSCOTIA").append("svg")
@@ -1533,7 +1497,7 @@ td:empty ,th:empty{
     
     var colorLegendG6 = g6.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale6 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1558,7 +1522,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -1697,10 +1661,9 @@ td:empty ,th:empty{
 
     
 <script>
-    //var outerWidth = 830;  
-    var outerWidth = 630;
-    var outerHeight = 180;
-	//var outerHeight = 280;
+      
+    var outerWidth = 830;
+    var outerHeight = 280;
     var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
@@ -1711,7 +1674,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerSCOTIA1").append("svg")
@@ -1735,7 +1698,7 @@ td:empty ,th:empty{
     
     var colorLegendG7 = g7.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale7 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1760,7 +1723,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -2042,12 +2005,10 @@ td:empty ,th:empty{
 
 <script>
     //Manulife line START
-  //var outerWidth = 830;
-  var outerWidth = 630;
-  var outerHeight = 180;
-  //var outerHeight = 220;
-  //var margin = { left: 110, top: 5, right: 20, bottom: 20 };
-  var margin = { left: 115, top: 5, right: 45, bottom: 10 };  
+  var outerWidth = 830;
+  var outerHeight = 220;
+  var margin = { left: 110, top: 5, right: 20, bottom: 20 };
+    
   
   var xColumn = "month";
   var yColumn = "revenue";
@@ -2079,8 +2040,8 @@ td:empty ,th:empty{
   // this is year color indicator
   
   var colorLegendG8 = g8.append("g")
-  .attr("class", "color-legend1")
-  .attr("transform", "translate(" + (innerWidth + 5) + "," + margin.top +")");
+  .attr("class", "color-legend")
+  .attr("transform", "translate(" + (innerWidth - 10) + "," + margin.top +")");
   
   var xScale8 = d3.scale.linear().range([0, innerWidth]);  // xscale
   
@@ -2105,7 +2066,7 @@ td:empty ,th:empty{
     .shapePadding(3)
     .shapeWidth(15)
     .shapeHeight(15)
-    .labelOffset(5);
+    .labelOffset(10);
     
     
     // actual logic is below to draw the whole with data
@@ -2222,7 +2183,7 @@ td:empty ,th:empty{
           var container = d3.select("#containerMANULIFE").
           
           append("g")
-              .append("table1").selectAll("tr")
+              .append("table").selectAll("tr")
                    .data(parsedCSV).enter()
                    .append("tr")
                    .attr("class", "head")
@@ -2243,12 +2204,10 @@ td:empty ,th:empty{
     
 <script>
       //Manulife line START
-    //var outerWidth = 830;
-	var outerWidth = 630;
-    //var outerHeight = 220;
-    var outerHeight = 180;
-	//var margin = { left: 120, top: 5, right: 10, bottom: 20 };
-    var margin = { left: 115, top: 5, right: 45, bottom: 10 };
+    var outerWidth = 830;
+    var outerHeight = 220;
+    var margin = { left: 120, top: 5, right: 10, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
@@ -2280,8 +2239,8 @@ td:empty ,th:empty{
     // this is year color indicator
     
     var colorLegendG9 = g9.append("g")
-    .attr("class", "color-legend1")
-    .attr("transform", "translate(" + (innerWidth + 3) + "," + margin.top +")");
+    .attr("class", "color-legend")
+    .attr("transform", "translate(" + (innerWidth - 20) + "," + margin.top +")");
     
     var xScale9 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -2306,7 +2265,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -2426,7 +2385,7 @@ td:empty ,th:empty{
             var container = d3.select("#containerMANULIFE1").
             
             append("g")
-                .append("table1").selectAll("tr")
+                .append("table").selectAll("tr")
                      .data(parsedCSV).enter()
                      .append("tr")
                      .attr("class", "head")
@@ -2444,12 +2403,10 @@ td:empty ,th:empty{
 
 <script>
       //CIBC REV START
-    //var outerWidth = 830;
-	var outerWidth = 630;
-    //var outerHeight = 220;
-    var outerHeight = 180;
-	//var margin = { left: 110, top: 5, right: 20, bottom: 20 };
-    var margin = { left: 100, top: 5, right: 50, bottom: 10 };
+    var outerWidth = 830;
+    var outerHeight = 220;
+    var margin = { left: 110, top: 5, right: 20, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
@@ -2458,7 +2415,7 @@ td:empty ,th:empty{
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right + 5;
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#containerCIBC").append("svg")
@@ -2481,8 +2438,8 @@ td:empty ,th:empty{
     // this is year color indicator
     
     var colorLegendG10 = g10.append("g")
-    .attr("class", "color-legend1")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("class", "color-legend")
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale10 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -2507,7 +2464,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -2601,7 +2558,7 @@ td:empty ,th:empty{
             var container = d3.select("#containerCIBC").
             
             append("g")
-                .append("table1").selectAll("tr")
+                .append("table").selectAll("tr")
                      .data(parsedCSV).enter()
                      .append("tr")
                      .attr("class", "head")
@@ -2619,19 +2576,16 @@ td:empty ,th:empty{
 
 <script>
       //CIBC GP START 
-	//var outerWidth = 830;  
-    var outerWidth = 630;
-    //var outerHeight = 220;
-    var outerHeight = 180;
-	//var margin = { left: 120, top: 5, right: 20, bottom: 20 };
-    var margin = { left: 100, top: 5, right: 50, bottom: 10 };
+    var outerWidth = 830;
+    var outerHeight = 220;
+    var margin = { left: 120, top: 5, right: 20, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
     var colorColumn = "year";
     var lineColumn = colorColumn;
     
-	var innerWidth1  = outerWidth  - margin.left - margin.right+3; // 1200 - 80 - 50 = 1070
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
     
@@ -2657,8 +2611,8 @@ td:empty ,th:empty{
     // this is year color indicator
     
     var colorLegendG11 = g11.append("g")
-    .attr("class", "color-legend1")
-    .attr("transform", "translate(" + innerWidth1 + "," + margin.top +")");
+    .attr("class", "color-legend")
+    .attr("transform", "translate(" + innerWidth + "," + margin.top +")");
     
     var xScale11 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -2683,7 +2637,7 @@ td:empty ,th:empty{
       .shapePadding(3)
       .shapeWidth(15)
       .shapeHeight(15)
-      .labelOffset(5);
+      .labelOffset(10);
       
       
       // actual logic is below to draw the whole with data
@@ -2781,7 +2735,7 @@ td:empty ,th:empty{
             var container = d3.select("#containerCIBC1").
             
             append("g")
-                .append("table1").selectAll("tr")
+                .append("table").selectAll("tr")
                      .data(parsedCSV).enter()
                      .append("tr")
                      .attr("class", "head")

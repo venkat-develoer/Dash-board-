@@ -90,7 +90,7 @@ html, body, .container{
 
 .vspc {
     float: right;
-    width: 0.1%;
+    width: 0.5%;
     height: 50%;
     background-color: white;
 }
@@ -115,18 +115,16 @@ html, body, .container{
 .leftnew{
     float: left;
     width: 47%;
-    height: 55%;
-	background-color: #F7EEEE;
-    // background-color: #F2F2F2;
+    height: 50%;
+    background-color: #F2F2F2;
 	margin: 20px;
 	box-shadow: 5px 10px #888888;
 }
 .rightnew{
     float: right;
     width: 47%;
-    height: 55%;
-    background-color: #F7EEEE;
-	// background-color: #F2F2F2;
+    height: 50%;
+    background-color: #F2F2F2;
 	margin: 20px;
 	box-shadow: 5px 10px #888888;
 }
@@ -140,7 +138,7 @@ html, body, .container{
     
       .axis text {
         font-family: 'Open Sans', sans-serif;
-        font-size: 8pt;
+        font-size: 12pt;
       }
       .axis .label {
         font-size: 18pt;
@@ -154,37 +152,22 @@ html, body, .container{
       
       .color-legend text {
         font-family: 'Open Sans', sans-serif;
-        font-size: 8pt;
+        font-size: 12pt;
       }
-	  
-	  .color-legend1 text {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 7.5pt;
-      }
+
 
 .table-month {
   border-collapse: collapse;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   margin-top: 15px;
-  margin-left: 30px;  
-  font-size: 7.5pt; 
-}
-.table-month1 {
-  border-collapse: collapse;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
-  margin-left: 30px;  
-  font-size: 7pt; 
+  margin-left: 20px;
 }
 
 .table-qtr {
   border-collapse: collapse;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  margin-top: 25px;
-  margin-left: 30px;
-  table-layout: fixed;  
-  width: 500px;
-  font-size: 8pt;
+  margin-top: 15px;
+  margin-left: 170px;
 }
 
 
@@ -197,10 +180,6 @@ html, body, .container{
 
 }
 
-td:empty ,th:empty{
-  visibility: hidden;
-  display: none;
-}
 
 td, th{
   border: 1px solid white;
@@ -286,13 +265,13 @@ frm1.submit();
   </div>
 
   <div class="hspc"></div>
-  <div id="containerBMO" class="left">
+  <div id="containerBMO" class="leftnew">
       <p class= "chart-heading">
           BMO Monthly Cumulative Signing Trend - YOY (in $M CAD)
       </p>
   </div>
   <div class="vspc"></div>
-  <div id="containerBMO1" class="right">
+  <div id="containerBMO1" class="rightnew">
     <p class= "chart-heading">
           BMO Quarterly Signing Trend - YOY
     </p>
@@ -312,13 +291,13 @@ frm1.submit();
   </div>
   
   <div class="hspc"></div>
-  <div id="containerSCOTIA" class="left">
+  <div id="containerSCOTIA" class="leftnew">
       <p class= "chart-heading">
           SCOTIA Monthly Cumulative Signing Trend - YOY (in $M CAD)
       </p>
   </div>
   <div class="vspc"></div>
-  <div id="containerSCOTIA1" class="right">
+  <div id="containerSCOTIA1" class="rightnew">
       <p class= "chart-heading">
           SCOTIA Quarterly Signing Trend - YOY
       </p>
@@ -339,22 +318,22 @@ frm1.submit();
   </div>
   
   <div class="hspc"></div>
-  <div id="containerMANULIFE" class="leftnew">
+  <div id="containerMANULIFE" class="left">
       <p class= "chart-heading">
           INSURANCE Monthly Cumulative Signing Trend - YOY (in $M CAD)
       </p>
   </div>
   <div class="vspc"></div>
-  <div id="containerMANULIFE1" class="rightnew">
+  <div id="containerMANULIFE1" class="right">
       <p class= "chart-heading">
           INSURANCE Quarterly Signing Trend - YOY
       </p>
   </div>
 
 <script>
-    var outerWidth = 630;
-    var outerHeight = 180;
-    var margin = { left: 80, top: 5, right: 70, bottom: 20 };
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
     
     
     var xColumn = "month";
@@ -364,7 +343,7 @@ frm1.submit();
     
     var innerWidth  = outerWidth  - margin.left - margin.right; // 1200 - 80 - 50 = 1070
     var innerHeight = outerHeight - margin.top  - margin.bottom; // 300 - 5 - 20  = 275
-    var innerWidth1  = outerWidth  - margin.left - margin.right+15; // 1200 - 80 - 50 = 1070
+    
     
     // This will create the svg container with 1200 width and 300 hegith
     var svg = d3.select("#container").append("svg")
@@ -388,7 +367,7 @@ frm1.submit();
     
     var colorLegendG = g.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth1) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 20) + "," + margin.top +")");
     
     var xScale = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -533,21 +512,18 @@ frm1.submit();
   <script>
     
   //signing yoy PA start
-    var outerWidth = 630;
-    var outerHeight = 160;
     
-    //var outerWidth = 700;
-    //var outerHeight = 280;
-    var margin = { left: 110, top: 5, right: 100, bottom: 5 };
+    var outerWidth = 700;
+    var outerHeight = 280;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
     
-      var barPadding = 0.25;
-	
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
     var colorColumn = "year";
       var layerColumn = colorColumn;
-	  	
+
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
 
@@ -556,23 +532,23 @@ frm1.submit();
         .attr("height", outerHeight);
         
       var g8 = svgN.append("g")
-        .attr("transform", "translate(" + margin.left + "," + (margin.top) + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
       var xAxisG8 = g8.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + innerHeight + ")");
-        //   .attr("transform", "translate(0," + (innerHeight) + ")");
+        
       var yAxisG8 = g8.append("g")
         .attr("class", "y axis");
         
       var colorLegendG8 = g8.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth+10) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 20) + "," + margin.top +")");
         
         
 
       var xScale8 = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
-      var yScale8 = d3.scale.linear().range([(innerHeight), 0]);
+      var yScale8 = d3.scale.linear().range([innerHeight, 0]);
       var colorScale8 = d3.scale.category10();
 
       var xAxis8 = d3.svg.axis().scale(xScale8).orient("bottom")
@@ -676,12 +652,10 @@ frm1.submit();
     
     
    <script>
-    var outerWidth = 700;
-    var outerHeight = 180;
-    
-    //var outerWidth = 830;
-    //var outerHeight = 280;
-    var margin = { left: 100, top: 5, right: 120, bottom: 20 };
+   
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
   
     
     var xColumn = "month";
@@ -715,7 +689,7 @@ frm1.submit();
     
     var colorLegendG18 = g18.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth+10) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 60) + "," + margin.top +")");
     
     var xScale18 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -833,14 +807,12 @@ frm1.submit();
    </script>
    
    <script>
-    var outerWidth = 630;
-    var outerHeight = 160;
-    
-    //var outerWidth = 700;
-    //var outerHeight = 280;
-    //var margin = { left: 150, top: 5, right: 60, bottom: 5 };
-    var margin = { left: 110, top: 5, right: 100, bottom: 5 };
-      var barPadding = 0.25;
+   
+    var outerWidth = 700;
+    var outerHeight = 280;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
+  
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
@@ -866,7 +838,7 @@ frm1.submit();
         
       var colorLegendG19 = g19.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth +10) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 60) + "," + margin.top +")");
         
         
 
@@ -977,10 +949,10 @@ frm1.submit();
    
     <script>
    
-    var outerWidth = 700;
-    var outerHeight = 180;
-    //var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-    var margin = { left: 100, top: 5, right: 120, bottom: 20 };
+   var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
@@ -1013,7 +985,7 @@ frm1.submit();
     
     var colorLegendG20 = g20.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth + 10) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 60) + "," + margin.top +")");
     
     var xScale20 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1132,14 +1104,11 @@ frm1.submit();
    
     <script>
    
-     // var outerWidth = 700;
-	var outerWidth = 630;
-     //var outerHeight = 280;
-    var outerHeight = 160;
-	//var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-	var margin = { left: 110, top: 5, right: 100, bottom: 5 };      
-	
-      var barPadding = 0.25;
+   var outerWidth = 700;
+    var outerHeight = 280;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
+    
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
@@ -1165,7 +1134,7 @@ frm1.submit();
         
       var colorLegendG21 = g21.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth +10) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 60) + "," + margin.top +")");
         
         
 
@@ -1275,12 +1244,10 @@ frm1.submit();
    
     <script>
    
-     //var outerWidth = 830;
-   var outerWidth = 700;
-    // var outerHeight = 220;
-	var outerHeight = 180;
-    // var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-    var margin = { left: 110, top: 5, right: 110, bottom: 20 };
+   var outerWidth = 830;
+    var outerHeight = 220;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
@@ -1313,7 +1280,7 @@ frm1.submit();
     
     var colorLegendG22 = g22.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth +5) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 70) + "," + margin.top +")");
     
     var xScale22 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1432,17 +1399,11 @@ frm1.submit();
    
     <script>
    
-    //var outerWidth = 700;
-    //var outerHeight = 220;
-    var outerWidth = 630;
-    // var outerHeight = 220;
-	var outerHeight = 160;
-	
-	//var margin = { left: 200, top: 5, right: 50, bottom: 20 };
-    //var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-    //var margin = { left: 150, top: 5, right: 60, bottom: 5 }; 
-	var margin = { left: 110, top: 5, right: 100, bottom: 5 };   	
-	var barPadding = 0.25;
+    var outerWidth = 700;
+    var outerHeight = 220;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
+    
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
@@ -1468,7 +1429,7 @@ frm1.submit();
         
       var colorLegendG23 = g23.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth +10) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 70) + "," + margin.top +")");
         
         
 
@@ -1577,12 +1538,10 @@ frm1.submit();
    
    <script>
    
-    // var outerWidth = 830;
-    // var outerHeight = 280;
-	var outerWidth = 700;
-    var outerHeight = 180;
-    //var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-  var margin = { left: 110, top: 5, right: 110, bottom: 20 };
+    var outerWidth = 830;
+    var outerHeight = 280;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+  
     var xColumn = "month";
     var yColumn = "revenue";
     var colorColumn = "year";
@@ -1614,7 +1573,7 @@ frm1.submit();
     
     var colorLegendG24 = g24.append("g")
     .attr("class", "color-legend")
-    .attr("transform", "translate(" + (innerWidth +5 ) + "," + margin.top +")");
+    .attr("transform", "translate(" + (innerWidth - 70) + "," + margin.top +")");
     
     var xScale24 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -1734,14 +1693,11 @@ frm1.submit();
    
     <script>
    
-   //var outerWidth = 700;
-    //var outerHeight = 280;
-    // var margin = { left: 200, top: 5, right: 50, bottom: 20 };
-	var outerWidth = 630;
-    var outerHeight = 160;     
-	// var margin = { left: 150, top: 5, right: 70, bottom: 5 };
-	var margin = { left: 110, top: 5, right: 100, bottom: 5 };       
-	var barPadding = 0.25;
+   var outerWidth = 700;
+    var outerHeight = 280;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
+  
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
@@ -1767,7 +1723,7 @@ frm1.submit();
         
       var colorLegendG25 = g25.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth +1) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 70) + "," + margin.top +")");
         
         
 
@@ -1877,12 +1833,10 @@ frm1.submit();
    
     <script>
    
-    //var outerWidth = 830;
-    //var outerHeight = 220;
-	var outerWidth = 700;
-    var outerHeight = 180;
-    //var margin = { left: 80, top: 5, right: 50, bottom: 20 };
-    var margin = { left: 120, top: 5, right: 120, bottom: 20 };
+   var outerWidth = 830;
+    var outerHeight = 220;
+    var margin = { left: 80, top: 5, right: 50, bottom: 20 };
+    
     
     var xColumn = "month";
     var yColumn = "revenue";
@@ -1896,7 +1850,7 @@ frm1.submit();
     // This will create the svg container with 1260 width and 300 hegith
     var svg1 = d3.select("#containerMANULIFE").append("svg")
     .attr("width", outerWidth)
-    .attr("height", (outerHeight));
+    .attr("height", outerHeight);
 
 	// this will create transform at x=80 and y=5 g = group
     var g26 = svg1.append("g")
@@ -1914,8 +1868,8 @@ frm1.submit();
     // this is year color indicator
     
     var colorLegendG26 = g26.append("g")
-    .attr("class", "color-legend1")
-    .attr("transform", "translate(" + (innerWidth +5) + "," + margin.top +")");
+    .attr("class", "color-legend")
+    .attr("transform", "translate(" + (innerWidth -110) + "," + margin.top +")");
     
     var xScale26 = d3.scale.linear().range([0, innerWidth]);  // xscale
     
@@ -2020,7 +1974,7 @@ frm1.submit();
             var container = d3.select("#containerMANULIFE").
             
             append("g")
-                .append("table").attr("class", "table-month1").selectAll("tr")
+                .append("table").attr("class", "table-month").selectAll("tr")
                      .data(parsedCSV).enter()
                      .append("tr")
                      .attr("class", "head")
@@ -2035,14 +1989,11 @@ frm1.submit();
    
   <script>
    
-    //var outerWidth = 700;
-    //var outerHeight = 280;
-    //var margin = { left: 200, top: 5, right: 50, bottom: 20 };
-    //var margin = { left: 150, top: 5, right: 60, bottom: 5 };
-	var margin = { left: 110, top: 5, right: 100, bottom: 5 };   
-	var outerWidth = 630;
-    var outerHeight = 160;
-      var barPadding = 0.25;
+   var outerWidth = 700;
+    var outerHeight = 280;
+    var margin = { left: 200, top: 5, right: 50, bottom: 20 };
+    
+      var barPadding = 0.2;
 
      var xColumn = "month";
     var yColumn = "revenue";
@@ -2068,7 +2019,7 @@ frm1.submit();
         
       var colorLegendG27 = g27.append("g")
         .attr("class", "color-legend")
-        .attr("transform", "translate(" + (innerWidth -12) + "," + margin.top +")");
+        .attr("transform", "translate(" + (innerWidth - 110) + "," + margin.top +")");
         
         
 
